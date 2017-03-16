@@ -5,4 +5,5 @@ package com.hanbit.kakao.action;
  */
 
 public interface IUpdate {
+    public void update();
 }

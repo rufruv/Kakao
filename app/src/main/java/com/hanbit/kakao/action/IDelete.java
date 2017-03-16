@@ -5,4 +5,5 @@ package com.hanbit.kakao.action;
  */
 
 public interface IDelete {
+    public void delete();
 }

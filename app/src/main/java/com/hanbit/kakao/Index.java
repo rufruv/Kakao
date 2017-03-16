@@ -5,18 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.hanbit.kakao.factory.ButtonFactory;
-import com.hanbit.kakao.factory.LinearLayoutFactory;
-import com.hanbit.kakao.factory.TextViewFactory;
+import com.hanbit.kakao.factory.CompositeCompo;
 import com.hanbit.kakao.member.MemberList;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class Index extends AppCompatActivity {
     Button button;
@@ -24,8 +18,8 @@ public class Index extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Context context = Index.this;
-        init(context);
-
+        HashMap<?,?>components=init(context);
+        Button button = (Button) components.get("EnterButton");
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,32 +28,10 @@ public class Index extends AppCompatActivity {
         });
 
     }
-    public void init(Context context){
-        Map<String,String>map=new HashMap<>();
-        map.put("type","vertical");
-        map.put("layoutParams","mm");
-        LinearLayout frame = LinearLayoutFactory.createLinearLayout(context,map);
-        map.clear();
-        map.put("type","basic");
-        map.put("text","HELLO");
-        map.put("layoutParams","mw");
-        map.put("color","white");
-        TextView textView = TextViewFactory.createTextView(context,map);
-        map.clear();
-        map.put("type","basic");
-        map.put("text","ENTER");
-        map.put("layoutParams","mw");
-        map.put("color","#00FF00");
-        button= ButtonFactory.createButton(context,map);
-        frame.addView(textView);
-        frame.addView(button);
-        setContentView(frame);
-
-        ViewGroup.MarginLayoutParams tvMargin=new ViewGroup.MarginLayoutParams(textView.getLayoutParams());
-        tvMargin.setMargins(0,200,0,0);
-        button.setLayoutParams(new LinearLayout.LayoutParams(tvMargin));
-        ViewGroup.MarginLayoutParams btnMargin=new ViewGroup.MarginLayoutParams(button.getLayoutParams());
-        btnMargin.setMargins(0,300,0,0);
-        button.setLayoutParams(new LinearLayout.LayoutParams(btnMargin));
+    public HashMap<?,?>init(Context context){
+        CompositeCompo compo = new CompositeCompo(context,"Index");
+        compo.execute();
+        setContentView(compo.getFrame());
+        return compo.getComponents();
     }
 }
