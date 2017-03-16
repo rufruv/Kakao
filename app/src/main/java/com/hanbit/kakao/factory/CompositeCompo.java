@@ -23,7 +23,7 @@ public class CompositeCompo {
     String order;
     Context context;
 
-    public CompositeCompo(Context context,String order) {
+    public CompositeCompo(Context context, String order) {
         this.context = context;
         this.order = order;
     }
@@ -50,8 +50,17 @@ public class CompositeCompo {
                     frame.addView((android.widget.ListView) map.get("MemberListView"));
                     break;
                 case "MemberDetail":frame= (LinearLayout) map.get(order);
-                    frame.addView((android.widget.TextView) map.get("HelloTextView"));
-                    frame.addView((android.widget.Button) map.get("EnterButton"));
+                    frame.addView((LinearLayout) map.get("ll1"));
+                    frame.addView((LinearLayout) map.get("ll2"));
+                    frame.addView((LinearLayout) map.get("ll3"));
+                    frame.addView((LinearLayout) map.get("ll4"));
+                    frame.addView((LinearLayout) map.get("ll5"));
+                    frame.addView((LinearLayout) map.get("ll6"));
+                    frame.addView((LinearLayout) map.get("ll7"));
+                    frame.addView((LinearLayout) map.get("ll8"));
+                    frame.addView((LinearLayout) map.get("ll9"));
+                    frame.addView((LinearLayout) map.get("ll10"));
+                    frame.addView((LinearLayout) map.get("ll11"));
                     break;
             }
         }
@@ -76,8 +85,8 @@ public class CompositeCompo {
                     case "MemberDetail":
                         LinearLayout.LayoutParams weight=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT,1);
                         /* 구글맵%내위치보기 */
-                        LinearLayout uiButton1=new LinearLayout(context);
-                        uiButton1.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
+                        LinearLayout ll7=new LinearLayout(context);
+                        ll7.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
                         Button btLocation=new Button(context);
                         btLocation.setLayoutParams(weight);
                         btLocation.setText("LOCATION");
@@ -88,11 +97,12 @@ public class CompositeCompo {
                         btGoogleMap.setText("GOOGLE MAP");
                         btGoogleMap.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                         map.put("btGoogleMap",btGoogleMap);
-                        uiButton1.addView(btLocation);
-                        uiButton1.addView(btGoogleMap);
+                        ll7.addView(btLocation);
+                        ll7.addView(btGoogleMap);
+                        map.put("ll7",ll7);
         /* 갤러리&음악*/
-                        LinearLayout uiButton2=new LinearLayout(context);
-                        uiButton2.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
+                        LinearLayout ll8=new LinearLayout(context);
+                        ll8.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
                         Button btGallery=new Button(context);
                         btGallery.setLayoutParams(weight);
                         btGallery.setText("GALLERY");
@@ -103,11 +113,12 @@ public class CompositeCompo {
                         btMusic.setText("MUSIC");
                         btMusic.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                         map.put("btMusic",btMusic);
-                        uiButton2.addView(btGallery);
-                        uiButton2.addView(btMusic);
+                        ll8.addView(btGallery);
+                        ll8.addView(btMusic);
+                        map.put("ll8",ll8);
         /* SMS&메일 */
-                        LinearLayout uiButton3=new LinearLayout(context);
-                        uiButton3.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
+                        LinearLayout ll9=new LinearLayout(context);
+                        ll9.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
                         Button btSMS=new Button(context);
                         btSMS.setLayoutParams(weight);
                         btSMS.setText("SMS");
@@ -118,11 +129,12 @@ public class CompositeCompo {
                         btMail.setText("MAIL");
                         btMail.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                         map.put("btMail",btMail);
-                        uiButton3.addView(btSMS);
-                        uiButton3.addView(btMail);
+                        ll9.addView(btSMS);
+                        ll9.addView(btMail);
+                        map.put("ll9",ll9);
         /* 다이알&전화걸기 */
-                        LinearLayout uiButton4=new LinearLayout(context);
-                        uiButton4.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
+                        LinearLayout ll10=new LinearLayout(context);
+                        ll10.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
                         Button btDial=new Button(context);
                         btDial.setLayoutParams(weight);
                         btDial.setText("DIAL");
@@ -133,11 +145,12 @@ public class CompositeCompo {
                         btCall.setText("CALL");
                         btCall.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                         map.put("btCall",btCall);
-                        uiButton4.addView(btDial);
-                        uiButton4.addView(btCall);
+                        ll10.addView(btDial);
+                        ll10.addView(btCall);
+                        map.put("ll10",ll10);
         /* 목록가기&업데이트 */
-                        LinearLayout uiButton5=new LinearLayout(context);
-                        uiButton5.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
+                        LinearLayout ll11=new LinearLayout(context);
+                        ll11.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
                         Button btList=new Button(context);
                         btList.setLayoutParams(weight);
                         btList.setText("LIST");
@@ -148,8 +161,9 @@ public class CompositeCompo {
                         btUpdate.setText("UPDATE");
                         btUpdate.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                         map.put("btUpdate",btUpdate);
-                        uiButton5.addView(btList);
-                        uiButton5.addView(btUpdate);
+                        ll11.addView(btList);
+                        ll11.addView(btUpdate);
+                        map.put("ll11",ll11);
                         break;
                 }
             }
@@ -205,8 +219,8 @@ public class CompositeCompo {
                         ll2.addView(tvNameContent);
                         map.put("ll2",ll2);
          /* Phone Row */
-                        LinearLayout uiPhone=new LinearLayout(context);
-                        uiPhone.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
+                        LinearLayout ll3=new LinearLayout(context);
+                        ll3.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
                         TextView tvPhone=new TextView(context);
                         tvPhone.setText("PHONE: ");
                         tvPhone.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
@@ -216,11 +230,12 @@ public class CompositeCompo {
                         tvPhoneContent.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
                         tvPhoneContent.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                         map.put("tvPhoneContent",tvPhoneContent);
-                        uiPhone.addView(tvPhone);
-                        uiPhone.addView(tvPhoneContent);
+                        ll3.addView(tvPhone);
+                        ll3.addView(tvPhoneContent);
+                        map.put("ll3",ll3);
          /* Age Row */
-                        LinearLayout uiAge=new LinearLayout(context);
-                        uiAge.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
+                        LinearLayout ll4=new LinearLayout(context);
+                        ll4.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
                         TextView tvAge=new TextView(context);
                         tvAge.setText("AGE: ");
                         tvAge.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
@@ -230,11 +245,12 @@ public class CompositeCompo {
                         tvAgeContent.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
                         tvAgeContent.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                         map.put("tvAgeContent",tvAgeContent);
-                        uiAge.addView(tvAge);
-                        uiAge.addView(tvAgeContent);
+                        ll4.addView(tvAge);
+                        ll4.addView(tvAgeContent);
+                        map.put("ll4",ll4);
          /* Address Row */
-                        LinearLayout uiAddress=new LinearLayout(context);
-                        uiAddress.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
+                        LinearLayout ll5=new LinearLayout(context);
+                        ll5.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
                         TextView tvAddress=new TextView(context);
                         tvAddress.setText("ADDRESS: ");
                         tvAddress.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
@@ -244,11 +260,12 @@ public class CompositeCompo {
                         tvAddressContent.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
                         tvAddressContent.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                         map.put("tvAddressContent",tvAddressContent);
-                        uiAddress.addView(tvAddress);
-                        uiAddress.addView(tvAddressContent);
+                        ll5.addView(tvAddress);
+                        ll5.addView(tvAddressContent);
+                        map.put("ll5",ll5);
          /* Salary Row */
-                        LinearLayout uiSalary=new LinearLayout(context);
-                        uiSalary.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
+                        LinearLayout ll6=new LinearLayout(context);
+                        ll6.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
                         TextView tvSalary=new TextView(context);
                         tvSalary.setText("SALARY: ");
                         tvSalary.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
@@ -258,8 +275,9 @@ public class CompositeCompo {
                         tvSalaryContent.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
                         tvSalaryContent.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                         map.put("tvSalaryContent",tvSalaryContent);
-                        uiSalary.addView(tvSalary);
-                        uiSalary.addView(tvSalaryContent);
+                        ll6.addView(tvSalary);
+                        ll6.addView(tvSalaryContent);
+                        map.put("ll6",ll6);
                         break;
                 }
             }

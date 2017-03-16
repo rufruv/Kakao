@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hanbit.kakao.action.IDetail;
@@ -56,7 +57,8 @@ public class MemberDetail extends AppCompatActivity {
         tvAddressContent.setText(rsMap.get("address"));
         TextView tvSalaryContent = (TextView) components.get("tvSalaryContent");
         tvSalaryContent.setText(rsMap.get("salary"));
-        setContentView((View) components.get("frame"));
+
+        setContentView((LinearLayout) components.get("frame"));
 
         Button btLocation = (Button) components.get("btLocation");
         btLocation.setOnClickListener(new View.OnClickListener() {
