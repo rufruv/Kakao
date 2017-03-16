@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hanbit.kakao.action.IDetail;
-import com.hanbit.kakao.factory.CompositeCompo;
+import com.hanbit.kakao.factory.Composite;
 import com.hanbit.kakao.factory.DetailQuery;
 
 import java.util.HashMap;
@@ -45,64 +45,64 @@ public class MemberDetail extends AppCompatActivity {
             temp+=entry.getKey()+","+entry.getValue()+",";
         }
         final String spec=temp;
-        TextView tvIdContent = (TextView) components.get("tvIdContent");
+        TextView tvIdContent = (TextView) components.get("tvDetailId");
         tvIdContent.setText(rsMap.get("id"));
-        TextView tvNameContent = (TextView) components.get("tvNameContent");
+        TextView tvNameContent = (TextView) components.get("tvDetailName");
         tvNameContent.setText(rsMap.get("name"));
-        TextView tvPhoneContent = (TextView) components.get("tvPhoneContent");
+        TextView tvPhoneContent = (TextView) components.get("tvDetailPhone");
         tvPhoneContent.setText(rsMap.get("phone"));
-        TextView tvAgeContent = (TextView) components.get("tvAgeContent");
+        TextView tvAgeContent = (TextView) components.get("tvDetailAge");
         tvAgeContent.setText(rsMap.get("age"));
-        TextView tvAddressContent = (TextView) components.get("tvAddressContent");
+        TextView tvAddressContent = (TextView) components.get("tvDetailAddress");
         tvAddressContent.setText(rsMap.get("address"));
-        TextView tvSalaryContent = (TextView) components.get("tvSalaryContent");
+        TextView tvSalaryContent = (TextView) components.get("tvDetailSalary");
         tvSalaryContent.setText(rsMap.get("salary"));
 
-        setContentView((LinearLayout) components.get("frame"));
+        setContentView((LinearLayout) components.get("llDetailFrame"));
 
-        Button btLocation = (Button) components.get("btLocation");
+        Button btLocation = (Button) components.get("btnDetailMyLocation");
         btLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-        Button btGoogleMap = (Button) components.get("btGoogleMap");
+        Button btGoogleMap = (Button) components.get("btnDetailGoogleMap");
         btGoogleMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-        Button btGallery = (Button) components.get("btGallery");
+        Button btGallery = (Button) components.get("btnDetailAlbum");
         btGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-        Button btMusic = (Button) components.get("btMusic");
+        Button btMusic = (Button) components.get("btnDetailMusic");
         btMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-        Button btSMS = (Button) components.get("btSMS");
+        Button btSMS = (Button) components.get("btnDetailSMS");
         btSMS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-        Button btMail = (Button) components.get("btMail");
+        Button btMail = (Button) components.get("btnDetailMail");
         btMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-        Button btDial = (Button) components.get("btDial");
+        Button btDial = (Button) components.get("btnDetailDial");
         btDial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,14 +112,14 @@ public class MemberDetail extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Button btCall = (Button) components.get("btCall");
+        Button btCall = (Button) components.get("btnDetailCall");
         btCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-        Button btList = (Button) components.get("btList");
+        Button btList = (Button) components.get("btnDetailList");
         btList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,7 +127,7 @@ public class MemberDetail extends AppCompatActivity {
 
             }
         });
-        Button btUpdate = (Button) components.get("btUpdate");
+        Button btUpdate = (Button) components.get("btnDetailUpdate");
         btUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,6 +137,7 @@ public class MemberDetail extends AppCompatActivity {
             }
         });
     }
+
     class DetailDAO extends DetailQuery {
         public DetailDAO(Context context) {
             super(context);
@@ -160,7 +161,7 @@ public class MemberDetail extends AppCompatActivity {
         }
     }
     public HashMap<?,?>init(Context context){
-        CompositeCompo compo = new CompositeCompo(context,"MemberDetail");
+        Composite compo = new Composite(context,"MemberDetail");
         compo.execute();
         setContentView(compo.getFrame());
         return compo.getComponents();

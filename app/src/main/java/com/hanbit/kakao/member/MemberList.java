@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.hanbit.kakao.R;
 import com.hanbit.kakao.action.IDelete;
 import com.hanbit.kakao.action.IList;
-import com.hanbit.kakao.factory.CompositeCompo;
+import com.hanbit.kakao.factory.Composite;
 import com.hanbit.kakao.factory.DeleteQuery;
 import com.hanbit.kakao.factory.LayoutParamsFactory;
 import com.hanbit.kakao.factory.ListQuery;
@@ -46,7 +46,7 @@ public class MemberList extends AppCompatActivity {
         final Context context=MemberList.this;
         HashMap<?,?>components=init(context);
         final HashMap<String,String>map = new HashMap<>();
-        final ListView listView = (ListView) components.get("MemberListView");
+        final ListView listView = (ListView) components.get("lvMemberList");
         final ListDAO dao=new ListDAO(context);
         final IList service=new IList() {
             @Override
@@ -210,7 +210,7 @@ public class MemberList extends AppCompatActivity {
         TextView tvName,tvPhone;
     }
     public HashMap<?,?>init(Context context){
-        CompositeCompo compo = new CompositeCompo(context,"MemberList");
+        Composite compo = new Composite(context,"MemberList");
         compo.execute();
         setContentView(compo.getFrame());
         return compo.getComponents();
