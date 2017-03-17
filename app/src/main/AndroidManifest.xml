@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hanbit.kakao">
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -18,8 +20,10 @@
         </activity>
         <activity android:name=".member.MemberAdd" />
         <activity android:name=".member.MemberList" />
-        <activity android:name=".member.MemberDetail"/>
-        <activity android:name=".member.MemberUpdate"/>
+        <activity android:name=".member.MemberDetail" />
+        <activity android:name=".member.MemberUpdate" />
+        <activity android:name=".message.MessageWrite" />
+        <activity android:name=".Test"></activity>
     </application>
 
 </manifest>

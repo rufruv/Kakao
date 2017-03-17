@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.hanbit.kakao.action.IDetail;
 import com.hanbit.kakao.factory.Composite;
 import com.hanbit.kakao.factory.DetailQuery;
+import com.hanbit.kakao.message.MessageWrite;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -37,7 +38,7 @@ public class MemberDetail extends AppCompatActivity {
                 return dao.detail("select _id AS id,name,phone,age,address,salary from member where _id='"+id+"';");
             }
         };
-        Map<String,String>rsMap= (Map<String,String>)service.detail();
+        final Map<String,String>rsMap= (Map<String,String>)service.detail();
         String temp="";
         Iterator<Map.Entry<String,String>>it=rsMap.entrySet().iterator();
         while (it.hasNext()){
@@ -45,6 +46,7 @@ public class MemberDetail extends AppCompatActivity {
             temp+=entry.getKey()+","+entry.getValue()+",";
         }
         final String spec=temp;
+
         TextView tvIdContent = (TextView) components.get("tvDetailId");
         tvIdContent.setText("ID : "+ rsMap.get("id"));
         TextView tvNameContent = (TextView) components.get("tvDetailName");
@@ -92,7 +94,9 @@ public class MemberDetail extends AppCompatActivity {
         btSMS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, MessageWrite.class);
+                intent.putExtra("IdANDPhone",rsMap.get("id")+","+rsMap.get("name")+","+rsMap.get("phone"));
+                startActivity(intent);
             }
         });
         Button btMail = (Button) components.get("btnDetailMail");
