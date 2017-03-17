@@ -46,17 +46,17 @@ public class MemberDetail extends AppCompatActivity {
         }
         final String spec=temp;
         TextView tvIdContent = (TextView) components.get("tvDetailId");
-        tvIdContent.setText(rsMap.get("id"));
+        tvIdContent.setText("ID : "+ rsMap.get("id"));
         TextView tvNameContent = (TextView) components.get("tvDetailName");
-        tvNameContent.setText(rsMap.get("name"));
+        tvNameContent.setText("NAME : "+ rsMap.get("name"));
         TextView tvPhoneContent = (TextView) components.get("tvDetailPhone");
-        tvPhoneContent.setText(rsMap.get("phone"));
+        tvPhoneContent.setText("PHONE : " + rsMap.get("phone"));
         TextView tvAgeContent = (TextView) components.get("tvDetailAge");
-        tvAgeContent.setText(rsMap.get("age"));
+        tvAgeContent.setText("AGE : "+ rsMap.get("age"));
         TextView tvAddressContent = (TextView) components.get("tvDetailAddress");
-        tvAddressContent.setText(rsMap.get("address"));
+        tvAddressContent.setText("ADDRESS : " + rsMap.get("address"));
         TextView tvSalaryContent = (TextView) components.get("tvDetailSalary");
-        tvSalaryContent.setText(rsMap.get("salary"));
+        tvSalaryContent.setText("SALARY : "+ rsMap.get("salary"));
 
         setContentView((LinearLayout) components.get("llDetailFrame"));
 

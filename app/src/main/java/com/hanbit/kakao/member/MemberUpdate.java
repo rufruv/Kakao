@@ -5,16 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hanbit.kakao.action.IUpdate;
-import com.hanbit.kakao.factory.LayoutParamsFactory;
+import com.hanbit.kakao.factory.Composite;
 import com.hanbit.kakao.factory.WriteQuery;
 
 import java.util.HashMap;
@@ -29,6 +27,7 @@ public class MemberUpdate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         final Context context= MemberUpdate.this;
         Intent intent=this.getIntent();
+
         String spec=intent.getExtras().getString("spec").toString();
         Log.d("넘어온 스펙",spec);
         String[] specs=spec.split(",");
@@ -52,115 +51,22 @@ public class MemberUpdate extends AppCompatActivity {
         for(String key:keys){
             map.put(key,vals[v++]);
         }
-        LinearLayout ui=new LinearLayout(context);
-        LinearLayout.LayoutParams weight=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT,1);
-        ui.setOrientation(LinearLayout.VERTICAL);
-        ui.setLayoutParams(LayoutParamsFactory.createLayoutParams("mm"));
 
-        LinearLayout uiId=new LinearLayout(context);
-        uiId.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
-        final TextView tvId=new TextView(context);
-        tvId.setText("ID: ");
-        tvId.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
-        tvId.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        TextView tvIdContent=new TextView(context);
-        tvIdContent.setText("ID content");
-        tvIdContent.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
-        tvIdContent.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        uiId.addView(tvId);
-        uiId.addView(tvIdContent);
-        ui.addView(uiId);
+        HashMap<String,Object>components = (HashMap<String,Object>)init(context);
 
-        LinearLayout uiName=new LinearLayout(context);
-        uiName.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
-        TextView tvName=new TextView(context);
-        tvName.setText("NAME: ");
-        tvName.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
-        tvName.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        TextView tvNameContent=new TextView(context);
-        tvNameContent.setText("NAME content");
-        tvNameContent.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
-        tvNameContent.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        uiName.addView(tvName);
-        uiName.addView(tvNameContent);
-        ui.addView(uiName);
-
-        LinearLayout uiPhone=new LinearLayout(context);
-        uiPhone.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
-        TextView tvPhone=new TextView(context);
-        tvPhone.setText("PHONE: ");
-        tvPhone.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
-        tvPhone.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        final EditText etPhoneContent=new EditText(context);
-        etPhoneContent.setHint("PHONE content");
-        etPhoneContent.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
-        etPhoneContent.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        uiPhone.addView(tvPhone);
-        uiPhone.addView(etPhoneContent);
-        ui.addView(uiPhone);
-
-        LinearLayout uiAge=new LinearLayout(context);
-        uiAge.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
-        TextView tvAge=new TextView(context);
-        tvAge.setText("AGE: ");
-        tvAge.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
-        tvAge.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        TextView tvAgeContent=new TextView(context);
-        tvAgeContent.setText("AGE content");
-        tvAgeContent.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
-        tvAgeContent.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        uiAge.addView(tvAge);
-        uiAge.addView(tvAgeContent);
-        ui.addView(uiAge);
-
-        LinearLayout uiAddress=new LinearLayout(context);
-        uiAddress.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
-        TextView tvAddress=new TextView(context);
-        tvAddress.setText("ADDRESS: ");
-        tvAddress.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
-        tvAddress.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        final EditText etAddressContent=new EditText(context);
-        etAddressContent.setHint("ADDRESS content");
-        etAddressContent.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
-        etAddressContent.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        uiAddress.addView(tvAddress);
-        uiAddress.addView(etAddressContent);
-        ui.addView(uiAddress);
-
-        LinearLayout uiSalary=new LinearLayout(context);
-        uiSalary.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
-        TextView tvSalary=new TextView(context);
-        tvSalary.setText("SALARY: ");
-        tvSalary.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
-        tvSalary.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        final EditText etSalaryContent=new EditText(context);
-        etSalaryContent.setHint("SALARY content");
-        etSalaryContent.setLayoutParams(LayoutParamsFactory.createLayoutParams("ww"));
-        etSalaryContent.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        uiSalary.addView(tvSalary);
-        uiSalary.addView(etSalaryContent);
-        ui.addView(uiSalary);
-
-        LinearLayout uiButton=new LinearLayout(context);
-        uiButton.setLayoutParams(LayoutParamsFactory.createLayoutParams("mw"));
-        Button btCancel=new Button(context);
-        btCancel.setLayoutParams(weight);
-        btCancel.setText("CANCEL");
-        btCancel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        Button btConfirm=new Button(context);
-        btConfirm.setLayoutParams(weight);
-        btConfirm.setText("CONFIRM");
-        btConfirm.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        uiButton.addView(btCancel);
-        uiButton.addView(btConfirm);
-        ui.addView(uiButton);
+        TextView tvIdContent = (TextView) components.get("tvUpdateId");
         tvIdContent.setText(map.get("id"));
+        TextView tvNameContent = (TextView) components.get("tvUpdateName");
         tvNameContent.setText(map.get("name"));
+        final EditText etPhoneContent = (EditText) components.get("etUpdatePhone");
         etPhoneContent.setHint(map.get("phone"));
+        TextView tvAgeContent = (TextView) components.get("tvUpdateAge");
         tvAgeContent.setText(map.get("age"));
+        final EditText etAddressContent = (EditText) components.get("etUpdateAddress");
         etAddressContent.setHint(map.get("address"));
+        final EditText etSalaryContent = (EditText) components.get("etUpdateSalary");
         etSalaryContent.setHint(map.get("salary"));
-        setContentView(ui);
+        setContentView((LinearLayout) components.get("llUpdateFrame"));
 
         final UpdateDAO dao=new UpdateDAO(context);
         final IUpdate updateService = new IUpdate() {
@@ -172,6 +78,7 @@ public class MemberUpdate extends AppCompatActivity {
             }
         };
 
+        Button btConfirm = (Button) components.get("btnUpdateCancel");
         btConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,6 +97,7 @@ public class MemberUpdate extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button btCancel = (Button) components.get("btnUpdateConfirm");
         btCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -205,5 +113,11 @@ public class MemberUpdate extends AppCompatActivity {
         public void update(String sql) {
             super.getDatabase().execSQL(sql);
         }
+    }
+    public HashMap<?,?>init(Context context){
+        Composite compo = new Composite(context,"MemberUpdate");
+        compo.execute();
+        setContentView(compo.getFrame());
+        return compo.getComponents();
     }
 }

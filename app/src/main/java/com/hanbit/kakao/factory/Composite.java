@@ -82,6 +82,23 @@ public class Composite {
                     temp5.addView((Button) map.get("btnDetailUpdate"));
                     temp5.addView((Button) map.get("btnDetailList"));
                     frame.addView(temp5);
+                    break;
+                case "MemberUpdate":
+                    frame = (LinearLayout) map.get("llUpdateFrame");
+                    frame.addView((TextView) map.get("tvUpdate"));
+                    LinearLayout llUpdateSub = (LinearLayout) map.get("llUpdateSub");
+                    llUpdateSub.addView((TextView) map.get("tvUpdateId"));
+                    llUpdateSub.addView((TextView) map.get("tvUpdateName"));
+                    llUpdateSub.addView((EditText) map.get("etUpdatePhone"));
+                    llUpdateSub.addView((TextView) map.get("tvUpdateAge"));
+                    llUpdateSub.addView((EditText) map.get("etUpdateAddress"));
+                    llUpdateSub.addView((EditText) map.get("etUpdateSalary"));
+                    frame.addView(llUpdateSub);
+                    LinearLayout btns1 = (LinearLayout) map.get("llUpdateBtns1");
+                    btns1.addView((Button) map.get("btnDetailMyLocation"));
+                    btns1.addView((Button) map.get("btnDetailGoogleMap"));
+                    frame.addView(btns1);
+                    break;
             }
         }
 
@@ -104,10 +121,14 @@ public class Composite {
                         map.put("btnDetailMusic", Complex.ButtonFactory.create(context, mww, "MUSIC"));
                         map.put("btnDetailSMS", Complex.ButtonFactory.create(context, mww, "SMS"));
                         map.put("btnDetailMail", Complex.ButtonFactory.create(context, mww, "MAIL"));
-                        map.put("btnDetailDial", Complex.ButtonFactory.create(context, mww, "DIAL", "#51b6e1"));
+                        map.put("btnDetailDial", Complex.ButtonFactory.create(context, mww, "DIAL"));
                         map.put("btnDetailCall", Complex.ButtonFactory.create(context, mww, "CALL"));
-                        map.put("btnDetailUpdate", Complex.ButtonFactory.create(context, mww, "UPDATE", "#51b6e1"));
-                        map.put("btnDetailList", Complex.ButtonFactory.create(context, mww, "LIST", "#51b6e1"));
+                        map.put("btnDetailUpdate", Complex.ButtonFactory.create(context, mww, "UPDATE"));
+                        map.put("btnDetailList", Complex.ButtonFactory.create(context, mww, "LIST"));
+                        break;
+                    case "MemberUpdate":
+                        map.put("btnUpdateCancel", Complex.ButtonFactory.create(context, mww, "CANCEL"));
+                        map.put("btnUpdateConfirm", Complex.ButtonFactory.create(context, mww, "CONFIRM"));
                         break;
                 }
             }
@@ -129,12 +150,18 @@ public class Composite {
                         break;
                     case "MemberDetail":
                         map.put("tvDetail", Complex.TextViewFactory.create(context, mw, "상세", 30, "center"));
-                        map.put("tvDetailId", Complex.TextViewFactory.create(context, mw, "Name:", 25, "left"));
+                        map.put("tvDetailId", Complex.TextViewFactory.create(context, mw, "ID:", 25, "left"));
                         map.put("tvDetailName", Complex.TextViewFactory.create(context, mw, "Name:", 25, "left"));
                         map.put("tvDetailPhone", Complex.TextViewFactory.create(context, mw, "Phone:", 25, "left"));
                         map.put("tvDetailAge", Complex.TextViewFactory.create(context, mw, "Age:", 25, "left"));
                         map.put("tvDetailAddress", Complex.TextViewFactory.create(context, mw, "Address:", 25, "left"));
                         map.put("tvDetailSalary", Complex.TextViewFactory.create(context, mw, "Salary:", 25, "left"));
+                        break;
+                    case "MemberUpdate":
+                        map.put("tvUpdate", Complex.TextViewFactory.create(context, mw, "상세", 30, "center"));
+                        map.put("tvUpdateId", Complex.TextViewFactory.create(context, mw, "ID:", 25, "left"));
+                        map.put("tvUpdateName", Complex.TextViewFactory.create(context, mw, "Name:", 25, "left"));
+                        map.put("tvUpdateAge", Complex.TextViewFactory.create(context, mw, "Age:", 25, "left"));
                         break;
                     case "Temp":
                         tv.setText("");
@@ -154,12 +181,18 @@ public class Composite {
         IComposite service = new IComposite() {
             @Override
             public void execute() {
+                LinearLayout.LayoutParams ww = Complex.LayoutParamsFactory.create("ww");
                 EditText et = new EditText(context);
                 switch (order) {
                     case "Index":
                         et.setText("");
                         et.setLayoutParams(Complex.LayoutParamsFactory.create("mw"));
                         map.put("etIndex",et);
+                        break;
+                    case "MemberUpdate":
+                        map.put("etUpdatePhone",Complex.EditTextFactory.create(context, ww, "PHONE content", 25));
+                        map.put("etUpdateAddress",Complex.EditTextFactory.create(context, ww, "ADDRESS content", 25));
+                        map.put("etUpdateSalary",Complex.EditTextFactory.create(context, ww, "SALARY content", 25));
                         break;
                 }
 
@@ -202,6 +235,11 @@ public class Composite {
                         map.put("llDetailBtns3", Complex.LinearLayoutFactory.create(context, mw, "h"));
                         map.put("llDetailBtns4", Complex.LinearLayoutFactory.create(context, mw, "h"));
                         map.put("llDetailBtns5", Complex.LinearLayoutFactory.create(context, mw, "h"));
+                        break;
+                    case "MemberUpdate":
+                        map.put("llUpdateFrame", Complex.LinearLayoutFactory.create(context, mm, "v"));
+                        map.put("llUpdateSub", Complex.LinearLayoutFactory.create(context, mw, "v"));
+                        map.put("llUpdateBtns1", Complex.LinearLayoutFactory.create(context, mw, "h"));
                         break;
                 }
             }
