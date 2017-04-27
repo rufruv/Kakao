@@ -39,10 +39,7 @@ public class MessageWrite extends AppCompatActivity {
             }
 
             @Override @android.webkit.JavascriptInterface
-            public void sendMessage(String message) {
-                temp=message;
-            }
-        }, "Hybrid");
+            public void sendMessage(String message) {temp=message;}}, "Hybrid");
 
         wv.loadUrl("file:///android_asset/www/html/messageWrite.html");
         frame.addView(wv);
